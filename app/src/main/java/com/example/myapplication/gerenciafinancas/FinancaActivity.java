@@ -1,9 +1,12 @@
 package com.example.myapplication.gerenciafinancas;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 
 public class FinancaActivity extends AppCompatActivity {
@@ -19,5 +22,11 @@ public class FinancaActivity extends AppCompatActivity {
         gerenciador.CalcularSaldo();
         gerenciador.GetTodasTransacoes();
         gerenciador.DeletarTransacao("tela");
+
+        Button button = findViewById(R.id.btn_fin_back);
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(FinancaActivity.this, MainActivity.class);
+            startActivity(intent); // Inicia a nova Activity
+        });
     }
 }

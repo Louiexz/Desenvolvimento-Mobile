@@ -13,6 +13,27 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".states.AtividadeUm"
+            android:exported="true" />
+        <activity
+            android:name=".states.AtividadeDois"
+            android:exported="true" />
+        <activity
+            android:name=".gerenciaeletronicos.EletronicosActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".gerenciaveiculos.VeiculosActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".gerenciacontatos.ContatosActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".gerenciafinancas.FinancaActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".gerenciainvestimentos.InvestimentoActivity"
+            android:exported="true"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

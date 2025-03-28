@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class GerenciaInvestimento implements IGerenciaInvestimento {
-	protected ArrayList<HashMap<String, String>> investimentos;
+	protected ArrayList<HashMap<String, String>> investimentos = new ArrayList<>();;
 
 	@Override
 	public void totalRetorno() {
@@ -37,11 +37,10 @@ public abstract class GerenciaInvestimento implements IGerenciaInvestimento {
 		try {
 			investimentos.stream()
 				.filter(c -> tipo.equals(c.get("Tipo")))
-				.forEach(c -> Log.i("Investimento: " + tipo + ", ", String.valueOf(c)));
+				.forEach(c -> Log.i("Investimento: ", String.valueOf(c)));
 		} catch(Exception e) {
 			Log.e("Erro: ", String.valueOf(e));
-		}	
-		
+		}
 	}
 
 	@Override

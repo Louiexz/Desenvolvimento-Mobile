@@ -1,6 +1,20 @@
 package com.example.myapplication.gerenciaeletronicos;
 
+import android.util.Log;
+
 public abstract class Eletronicos {
+
+    public void GetInformations(String eletronico) {
+        Log.i(eletronico,
+                "capacidadeBateria=" + capacidadeBateria +
+                ", modelo='" + modelo + '\'' +
+                ", marca='" + marca + '\'' +
+                ", ano=" + ano +
+                ", tamanhoTela=" + tamanhoTela +
+                ", capacidadeRam=" + capacidadeRam +
+                ", capacidadeMemoria=" + capacidadeMemoria);
+    }
+
     protected int capacidadeBateria;
     public abstract String getInput();
     public abstract int getCapacidadeBateria();
