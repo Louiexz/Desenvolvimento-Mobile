@@ -1,21 +1,12 @@
 package com.example.myapplication.gerenciaveiculos;
 
 public class Onibus extends Veiculos {
-    @Override
-    public String toString() {
-        return "Onibus{" +
-                "modelo='" + modelo + '\'' +
-                ", marca='" + marca + '\'' +
-                ", combustivel=" + combustivel +
-                ", qtdMaximaCombustivel=" + qtdMaximaCombustivel +
-                ", qtdMarcha=" + qtdMarcha +
-                ", capacidadeMotor=" + capacidadeMotor +
-                ", potencia=" + potencia +
-                ", ano=" + ano +
-                '}';
+    public void GetInformation() {
+        super.GetInformations("Onibus");
     }
+
     public Onibus(double combustivel, int qtdMarcha, String modelo, String marca,
-                double qtdMaximaCombustivel, double capacidadeMotor, int potencia, int ano) {
+                  double qtdMaximaCombustivel, double capacidadeMotor, int potencia, int ano) {
         super.setCombustivel(combustivel);
         super.setQtdMarcha(qtdMarcha);
         super.setModelo(modelo);

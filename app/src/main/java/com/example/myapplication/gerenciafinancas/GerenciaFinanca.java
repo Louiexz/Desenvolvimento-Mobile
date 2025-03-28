@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GerenciaFinanca implements IGerenciaFinanca {
-	protected ArrayList<HashMap<String, String>> transacoes;
+	protected ArrayList<HashMap<String, String>> transacoes = new ArrayList<>();;
 
 	@Override
 	public void CalcularSaldo() {
 		try {
 			double saldo = 0;
-			for (HashMap<String, String> c : transacoes) {
+			for (HashMap<String, String> c : this.transacoes) {
 				if (c.get("Despesa") != null) {
 					saldo -= Double.parseDouble(c.get("Despesa"));
 				} else if(c.get("Receita") != null) {
@@ -28,7 +28,7 @@ public class GerenciaFinanca implements IGerenciaFinanca {
 	@Override
 	public void GetReceitas() {
 		try {			
-			transacoes.stream()
+			this.transacoes.stream()
 				.filter(c -> c.get("Receita") != null)
 				.forEach(c -> Log.i("Receita: ", c.toString()));		
 		} catch(Exception e) {
@@ -39,7 +39,7 @@ public class GerenciaFinanca implements IGerenciaFinanca {
 	@Override
 	public void GetDespesas() {
 		try{ 
-			transacoes.stream()
+			this.transacoes.stream()
 	    		.filter(c -> c.get("Despesa") != null)
 	    		.forEach(c -> Log.i("Despesa: ", c.toString()));
 		} catch(Exception e) {
@@ -50,7 +50,7 @@ public class GerenciaFinanca implements IGerenciaFinanca {
 	@Override
 	public void GetTodasTransacoes() {
 		try {
-			Log.i("Transacoes: ", String.valueOf(transacoes));
+			Log.i("Transacoes: ", String.valueOf(this.transacoes));
 		} catch(Exception e) {
 			Log.e("Erro: ", String.valueOf(e));
 		}
@@ -61,10 +61,11 @@ public class GerenciaFinanca implements IGerenciaFinanca {
 		try {
 			HashMap<String, String> transacao = new HashMap<>();
 			
-			transacao.put(tipo, valor);
+			transacao.put("Tipo", tipo);
+			transacao.put("Valor", valor);
 			transacao.put("Item", item);
 			
-			transacoes.add(transacao);
+			this.transacoes.add(transacao);
 		} catch(Exception e) {
 			Log.e("Erro: ", String.valueOf(e));
 		}
@@ -73,7 +74,7 @@ public class GerenciaFinanca implements IGerenciaFinanca {
 	@Override
 	public void DeletarTransacao(String item) {
 		try {
-			transacoes.stream()
+			this.transacoes.stream()
 				.filter(c -> item.equals(c.get("item")))
 				.forEach(c -> transacoes.remove(c));
 		} catch(Exception e) {

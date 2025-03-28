@@ -1,6 +1,10 @@
 package com.example.myapplication.gerenciaeletronicos;
 
 public class Computador extends Eletronicos{
+    public void GetInformation() {
+        super.GetInformations("Computador");
+    }
+
     public Computador(int ano, String marca, String modelo) {
         super.setAno(ano);
         super.setMarca(marca);

@@ -1,8 +1,10 @@
 package com.example.myapplication.gerenciaveiculos;
 
+import android.util.Log;
+
 public abstract class Veiculos {
-    public String toString() {
-        return "" +
+    public void GetInformations(String veiculo) {
+        Log.i(veiculo,
                 "modelo='" + modelo + '\'' +
                 ", marca='" + marca + '\'' +
                 ", combustivel=" + combustivel +
@@ -10,8 +12,7 @@ public abstract class Veiculos {
                 ", qtdMarcha=" + qtdMarcha +
                 ", capacidadeMotor=" + capacidadeMotor +
                 ", potencia=" + potencia +
-                ", ano=" + ano +
-                '}';
+                ", ano=" + ano);
     }
 
     protected String modelo;

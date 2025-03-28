@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class GerenciaContatos implements Contatos {
-	protected ArrayList<HashMap<String, String>> listaContatos;
+	protected ArrayList<HashMap<String, String>> listaContatos = new ArrayList<>();;
 	
 	public void procurarContato(String contato) {
     	try {

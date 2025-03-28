@@ -1,9 +1,8 @@
 package com.example.myapplication.gerenciaveiculos;
 
 public class CarroEletrico extends Veiculos {
-    @Override
-    public String toString() {
-        return "CarroEletrico{" + super.toString();
+    public void GetInformation() {
+        super.GetInformations("CarroEletrico");
     }
 
     public CarroEletrico(double combustivel, int qtdMarcha, String modelo, String marca,
