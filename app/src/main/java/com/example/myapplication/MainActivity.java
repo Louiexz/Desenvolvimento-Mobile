@@ -6,11 +6,13 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.bibliotecadigital.BibliotecaDigitalActivity;
 import com.example.myapplication.gerenciacontatos.ContatosActivity;
 import com.example.myapplication.gerenciaeletronicos.EletronicosActivity;
 import com.example.myapplication.gerenciafinancas.FinancaActivity;
 import com.example.myapplication.gerenciainvestimentos.InvestimentoActivity;
 import com.example.myapplication.gerenciaveiculos.VeiculosActivity;
+import com.example.myapplication.platafomaeducacional.PlataformaDigitalActivity;
 import com.example.myapplication.states.AtividadeUm;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,6 +55,20 @@ public class MainActivity extends AppCompatActivity {
         Button btn_atv_um = findViewById(R.id.btn_atv_um);
         btn_atv_um.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AtividadeUm.class);
+            startActivity(intent); // Inicia a nova Activity
+        });
+
+        Button btn_biblioteca = findViewById(R.id.btn_bbt);
+        btn_biblioteca.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,
+                    BibliotecaDigitalActivity.class);
+            startActivity(intent); // Inicia a nova Activity
+        });
+
+        Button btn_plataforma = findViewById(R.id.btn_ptf);
+        btn_plataforma.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,
+                    PlataformaDigitalActivity.class);
             startActivity(intent); // Inicia a nova Activity
         });
     }

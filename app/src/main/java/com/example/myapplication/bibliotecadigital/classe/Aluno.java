@@ -1,4 +1,4 @@
-package bibliotecadigital.classe;
+package com.example.myapplication.bibliotecadigital.classe;
 
 import bibliotecadigital.interfaces.IAluno;
 
@@ -73,5 +73,14 @@ public class Aluno implements IAluno {
 	@Override
     public void setStatus(){
 		this.status = !this.status;
+	}
+
+	@Override
+	public String toString() {
+		return "{" +
+				"nome=" + nome +
+				", curso=" + curso +
+				", email=" + email +
+				'}';
 	}
 }

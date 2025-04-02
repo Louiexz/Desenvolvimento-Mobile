@@ -1,15 +1,15 @@
-package plataformaeducacional.interfaces;
+package com.example.myapplication.platafomaeducacional.interfaces;
 
-import plataformaeducacional.classe.Aluno;
-import plataformaeducacional.classe.Curso;
-import plataformaeducacional.classe.Inscricao;
+import com.example.myapplication.platafomaeducacional.classe.Aluno;
+import com.example.myapplication.platafomaeducacional.classe.Curso;
+
 import plataformaeducacional.excecao.LimiteMaximoInscricoesException;
 
 public interface IPlatarforma {
 	void InscreverAluno(String aluno, String curso) throws LimiteMaximoInscricoesException;
 	void NovoAluno(String nome, String senha, String email);
 	void NovoCurso(int valor, int limiteInscricoes, String autor, String titulo);
-	boolean getInscricao(String aluno, String curso);
 	Aluno verificarAluno(String aluno);
-	Curso verificarCurso(String curso) throws LimiteMaximoInscricoesException;
+
+	Curso verificarCurso(String curso);
 }

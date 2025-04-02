@@ -1,4 +1,4 @@
-package bibliotecadigital.classe;
+package com.example.myapplication.bibliotecadigital.classe;
 
 import bibliotecadigital.interfaces.IEmprestimo;
 

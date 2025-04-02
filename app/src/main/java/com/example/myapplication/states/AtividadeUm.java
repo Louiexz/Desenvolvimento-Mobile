@@ -12,14 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 
 public class AtividadeUm extends AppCompatActivity {
+    TextView tv = findViewById(R.id.meuRest);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atividade);
 
         Log.d(TagDeRegistro.LOG_TAG_UI, "Criacao da atividade principal.");
-
-        TextView tv = findViewById(R.id.meuRest);
 
         tv.setText("Ciclo de Vida");
         setTitle("Ciclo de Vida");

@@ -1,4 +1,4 @@
-package bibliotecadigital.classe;
+package com.example.myapplication.bibliotecadigital.classe;
 
 import bibliotecadigital.interfaces.ILivro;
 
@@ -74,5 +74,15 @@ public class Livro implements ILivro {
 	@Override
 	public void setStatus() {
 		this.status = !status;
+	}
+
+	@Override
+	public String toString() {
+		return "{" +
+				"ano=" + ano +
+				", titulo=" + titulo +
+				", autor=" + autor +
+				", genero=" + genero +
+				'}';
 	}
 }

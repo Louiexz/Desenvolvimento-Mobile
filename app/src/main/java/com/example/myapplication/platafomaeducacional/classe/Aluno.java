@@ -1,4 +1,4 @@
-package plataformaeducacional.classe;
+package com.example.myapplication.platafomaeducacional.classe;
 
 import plataformaeducacional.interfaces.IAluno;
 

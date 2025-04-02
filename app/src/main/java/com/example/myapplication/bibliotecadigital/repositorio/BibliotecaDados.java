@@ -1,19 +1,20 @@
-package bibliotecadigital.repositorio;
+package com.example.myapplication.bibliotecadigital.repositorio;
+
+import com.example.myapplication.bibliotecadigital.classe.Aluno;
+import com.example.myapplication.bibliotecadigital.classe.Emprestimo;
+import com.example.myapplication.bibliotecadigital.classe.Livro;
+import com.example.myapplication.bibliotecadigital.excecao.ObjetoNaoEncontradoException;
 
 import java.util.ArrayList;
-
-import bibliotecadigital.classe.Aluno;
-import bibliotecadigital.classe.Emprestimo;
-import bibliotecadigital.classe.Livro;
-import bibliotecadigital.excecao.ObjetoNaoEncontradoException;
+import java.util.List;
 
 public abstract class BibliotecaDados {
 	protected int LIMITE_EMPRESTIMO_DIAS = 0;
 	protected int LIMITE_LIVRO_EMPRESTADOS = 0;
-	
-	protected ArrayList<Aluno> alunos = new ArrayList<Aluno>();
-	protected ArrayList<Livro> livros = new ArrayList<Livro>();
-	protected ArrayList<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
+
+	protected List<Aluno> alunos = new ArrayList<>();
+	protected List<Livro> livros = new ArrayList<>();
+	protected List<Emprestimo> emprestimos = new ArrayList<>();
 	
 	private void DoesNotExist(Object obj) throws ObjetoNaoEncontradoException {
 		throw new ObjetoNaoEncontradoException("O objeto " + obj + " não foi encontrado.");
@@ -33,76 +34,96 @@ public abstract class BibliotecaDados {
 		}
 		return null;
 	}
-	protected Livro buscarLivrosPorAno(int ano) {
+	protected List<Livro> buscarLivrosPorAno(int ano) {
+		List<Livro> livrosEncontrados = new ArrayList<>();
 		for (Livro livro : livros) {
 			if (livro.getAno() == ano) {
-				return livro;
+				livrosEncontrados.add(livro);
 			}
 		}
-		return null;
+		return livrosEncontrados;
 	}
-	protected Livro buscarLivrosPorAutor(String autor) {
-		for (Livro livro : livros) {
-			if (livro.getAutor() == autor) {
-				return livro;
-			}
-		}
-		return null;
-	}
-	protected Livro buscarLivrosPorGenero(String genero) {
-		for (Livro livro : livros) {
-			if (livro.getGenero() == genero) {
-				return livro;
-			}
-		}
-		return null;
-	}
-	protected Livro buscarLivrosPorTitulo(String titulo) {
-		for (Livro livro : livros) {
-			if (livro.getTitulo() == titulo) {
-				return livro;
-			}
-		}
-		return null;
-	}
-	protected Livro buscarLivros(String livro) {		
-		ArrayList<Livro> livrosEncontrados = new ArrayList<Livro>();
-		
-		try {
-			Livro porAno = buscarLivrosPorAno(Integer.parseInt(livro));
-			livrosEncontrados.add(porAno);
-			
-		} catch (NumberFormatException e) {
-			Log.e("Erro: ", e);
 
-			// Se não for um número, tenta buscar por título, autor ou gênero
-			Livro porTitulo = buscarLivrosPorTitulo(livro);
-			Livro porGenero = buscarLivrosPorGenero(livro);
-			Livro porAutor = buscarLivrosPorAutor(livro);
-			
-			livrosEncontrados.add(porGenero);
-			livrosEncontrados.add(porAutor);
-			livrosEncontrados.add(porTitulo);		
+	protected List<Livro> buscarLivrosPorAutor(String autor) {
+		List<Livro> livrosEncontrados = new ArrayList<>();
+		for (Livro livro : livros) {
+			if (livro.getAutor().equalsIgnoreCase(autor)) {
+				livrosEncontrados.add(livro);
+			}
 		}
-		for (Livro livroLocal : livrosEncontrados) {
-			if (livroLocal != null) {
+		return livrosEncontrados;
+	}
+
+	protected List<Livro> buscarLivrosPorGenero(String genero) {
+		List<Livro> livrosEncontrados = new ArrayList<>();
+		for (Livro livro : livros) {
+			if (livro.getGenero().equalsIgnoreCase(genero)) {
+				livrosEncontrados.add(livro);
+			}
+		}
+		return livrosEncontrados;
+	}
+
+	protected List<Livro> buscarLivros(String livro) {
+		List<Livro> livrosEncontrados = new ArrayList<>();
+
+		try {
+			// Try to parse the string to an integer (year)
+			int ano = Integer.parseInt(livro);
+			livrosEncontrados.addAll(buscarLivrosPorAno(ano));
+		} catch (NumberFormatException e) {
+			// If it's not a number, search by title, author, or genre
+			Livro livroLocal = buscarLivro(livro);
+			if (livroLocal != null){
+				livrosEncontrados.add(livroLocal);
+			}
+			ArrayList livros = (ArrayList) buscarLivrosPorAutor(livro);
+			if (!livros.isEmpty()){
+				livrosEncontrados.addAll(livros);
+			}
+			livros = (ArrayList) buscarLivrosPorGenero(livro);
+			if (!livros.isEmpty()){
+				livrosEncontrados.addAll(livros);
+			}
+		}
+
+		return livrosEncontrados;
+	}
+
+	protected Livro buscarLivro(String livro) {
+		for (Livro livroLocal : livros){
+			if (livroLocal.getTitulo() == livro){
 				return livroLocal;
 			}
 		}
+
 		return null;
 	}
+
+	protected Emprestimo buscarEmprestimo(String nomeAluno, String livro) {
+		for (Emprestimo emprestimo : emprestimos){
+			if (emprestimo.getLivro() == livro && emprestimo.getAluno() == nomeAluno){
+				return emprestimo;
+			}
+		}
+
+		return null;
+	}
+
+
 	protected void novoEmprestimo(String nomeAluno, String livro) throws ObjetoNaoEncontradoException {	
 		Aluno aluno = buscarAluno(nomeAluno);
-		Livro livroLocal = buscarLivros(livro);
-		
-		if (livroLocal != null && aluno != null && livroLocal.isStatus()) {							
-			livroLocal.setStatus();
-			
-			Emprestimo emprestimo = new Emprestimo(aluno.getNome(),
-					livroLocal.getTitulo());
-			emprestimo.setStatus();
-			
-			emprestimos.add(emprestimo);
+		Livro livroLocal = buscarLivro(livro);
+
+		if (livroLocal != null && aluno != null) {
+			if (buscarEmprestimo(nomeAluno, livro) == null){
+				livroLocal.setStatus();
+
+				Emprestimo emprestimo = new Emprestimo(aluno.getNome(), livroLocal.getTitulo());
+				emprestimo.setStatus();
+
+				emprestimos.add(emprestimo);
+			}
 		} else {
 			DoesNotExist(livro);
 		}
@@ -110,19 +131,15 @@ public abstract class BibliotecaDados {
 
 	protected void devolverEmprestimo(String nomeAluno, String livro) throws ObjetoNaoEncontradoException {
 		Aluno aluno = buscarAluno(nomeAluno);
-		Livro livroLocal = buscarLivros(livro);
-		
-		if (livroLocal != null && aluno != null && !livroLocal.isStatus()) {	
-			livroLocal.setStatus();
-			
-			for (Emprestimo emprestimo : emprestimos) {
-				if (emprestimo.getLivro() == livroLocal.getTitulo()) {
-					emprestimo.setStatus();
-					break;
-				}
+		Livro livroLocal = buscarLivro(livro);
+
+		Emprestimo emprestimo = buscarEmprestimo(nomeAluno, livro);
+		if (livroLocal != null && aluno != null) {
+			if (emprestimo != null){
+				emprestimo.setStatus();
 			}
 		} else {
-			DoesNotExist(livro);
+			DoesNotExist(emprestimo);
 		}
 	}
 }

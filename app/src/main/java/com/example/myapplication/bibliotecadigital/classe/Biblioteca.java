@@ -1,11 +1,14 @@
-package bibliotecadigital.classe;
+package com.example.myapplication.bibliotecadigital.classe;
+
+import android.util.Log;
+
+import com.example.myapplication.bibliotecadigital.repositorio.BibliotecaDados;
 
 import java.util.ArrayList;
-
-import bibliotecadigital.repositorio.BibliotecaDados;
+import java.util.List;
 
 public class Biblioteca extends BibliotecaDados {
-	protected void autenticarAluno(String credencial, String senha) {
+	public void autenticarAluno(String credencial, String senha) {
 		try {
 			for (Aluno aluno : super.alunos) {			
 				if (aluno.nome == credencial || aluno.email == credencial
@@ -16,52 +19,72 @@ public class Biblioteca extends BibliotecaDados {
 				}
 			}
 		} catch (Exception e) {
-			Log.e("Erro, autenticação falha: ", e);
+			Log.e("Erro, autenticação falha: ", String.valueOf(e));
 		}
 	};
-	protected void cadastrarAluno(String nome, String senha,
+	public void cadastrarAluno(String nome, String senha,
 			String curso, String email) {
 		try {
-			Aluno alunoLocal = new Aluno(nome.strip(), senha.strip(),
-					curso.strip().toLowerCase(), email.strip().toLowerCase());
+			Aluno alunoLocal = new Aluno(nome, senha,
+					curso.toLowerCase(), email.toLowerCase());
 			super.alunos.add(alunoLocal);
+			Log.i("Cadastro: ", "Aluno cadastrado com sucesso.");
 		}  catch (Exception e) {
-			Log.e("Erro, cadastro falhou: ", e);
+			Log.e("Erro, cadastro falhou: ", String.valueOf(e));
 		}
 	};
-	protected void novoLivro(String titulo, String autor,
+	public void novoLivro(String titulo, String autor,
 			String genero, int ano) {
 		try{
-			Livro livroLocal = new Livro(titulo.strip().toLowerCase(), autor.strip().toLowerCase()
-					, genero.strip().toLowerCase(), ano);
+			Livro livroLocal = new Livro(titulo.toLowerCase(), autor.toLowerCase()
+					, genero.toLowerCase(), ano);
 			super.livros.add(livroLocal);
+			Log.i("Cadastro: ", "Livro registrado com sucesso.");
 		} catch (Exception e) {
-			Log.e("Erro, novo livro falhou: ", e);
+			Log.e("Erro, cadastro livro falhou: ", String.valueOf(e));
 		}		
 	};
 
-	protected Livro buscarLivros(String livro) {
-		try {
-			Livro livroLocal = super.buscarLivros(livro.toLowerCase());
-			Log.i("Livros: ", livroLocal.toString());
-		} catch (Exception e) {
-			Log.e("Erro, busca de livro falhou: ", e);
-		}		
+	public Aluno getAluno(String nome) {
+		Aluno alunoLocal = super.buscarAluno(nome);
+
+		if (alunoLocal != null){
+			Log.i("Busca: ", "Aluno: " + alunoLocal);
+		} else {
+			Log.i("Busca: ", "Aluno não encontrado");
+		}
+		return null;
 	}
-	
-	protected void novoEmprestimo(String nomeAluno, String livro) {		
+
+	public List<Livro> buscarLivros(String livro) {
 		try {
-			super.novoEmprestimo(nomeAluno, livro.toLowerCase());
+			ArrayList livros = (ArrayList) super.buscarLivros(livro);
+
+			if (!livros.isEmpty()){
+				Log.i("Livros: ", String.valueOf(livros));
+			} else {
+				Log.i("Livros: ", "Livros não encontrados.");
+			}
+			return null;
 		} catch (Exception e) {
-			Log.e("Erro, emprestímo falhou: ", e);
+			Log.e("Erro, busca de livro falhou: ", String.valueOf(e));
+		}
+		return null;
+	}
+
+	public void novoEmprestimo(String nomeAluno, String livro) {
+		try {
+			super.novoEmprestimo(nomeAluno, livro);
+		} catch (Exception e) {
+			Log.e("Erro, emprestímo falhou: ", String.valueOf(e));
 		}
 	}
 
-	protected void devolverEmprestimo(String nomeAluno, String livro) {
+	public void devolverEmprestimo(String nomeAluno, String livro) {
 		try{
-			super.devolverEmprestimo(nomeAluno, livro.toLowerCase());
+			super.devolverEmprestimo(nomeAluno, livro);
 		} catch (Exception e) {
-			Log.e("Erro, devolução falhou: ", e);
+			Log.e("Erro, devolução falhou: ", String.valueOf(e));
 		}
 	}
 }

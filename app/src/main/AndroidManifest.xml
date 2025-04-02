@@ -34,6 +34,12 @@
             android:name=".gerenciainvestimentos.InvestimentoActivity"
             android:exported="true"/>
         <activity
+            android:name=".bibliotecadigital.BibliotecaDigitalActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".platafomaeducacional.PlataformaDigitalActivity"
+            android:exported="true"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
