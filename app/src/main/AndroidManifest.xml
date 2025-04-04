@@ -13,6 +13,24 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".calculadora.CalculadoraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TesteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".testandolayout.ConstraintActivity"
+            android:exported="false" />
+        <activity
+            android:name=".testandolayout.RelativeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".testandolayout.LinearActivity"
+            android:exported="false" />
+        <activity
+            android:name=".testandolayout.TesteActivity"
+            android:exported="false" />
+        <activity
             android:name=".states.AtividadeUm"
             android:exported="true" />
         <activity
@@ -20,25 +38,25 @@
             android:exported="true" />
         <activity
             android:name=".gerenciaeletronicos.EletronicosActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".gerenciaveiculos.VeiculosActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".gerenciacontatos.ContatosActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".gerenciafinancas.FinancaActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".gerenciainvestimentos.InvestimentoActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".bibliotecadigital.BibliotecaDigitalActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".platafomaeducacional.PlataformaDigitalActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

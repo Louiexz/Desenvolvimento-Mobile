@@ -15,38 +15,51 @@ public class Plataforma extends PlataformaDigital {
     }
 
     @Override
-    public void NovoAluno(String nome, String senha, String email) {
-        super.NovoAluno(nome, senha, email);
+    public boolean NovoAluno(String nome, String senha, String email) {
+        if (super.NovoAluno(nome, senha, email)){
+            Log.i("Registro: ", "O aluno foi registrado.");
+        }
+        Log.i("Registro: ", "O aluno não foi registrado.");
+        return false;
     }
 
     @Override
-    public void NovoCurso(int valor, int limiteInscricoes, String autor, String titulo) {
-        super.NovoCurso(valor, limiteInscricoes, autor, titulo);
+    public boolean NovoCurso(int valor, int limiteInscricoes, String autor, String titulo) {
+        if (super.NovoCurso(valor, limiteInscricoes, autor, titulo)){
+            Log.i("Registro: ", "O curso foi registrado.");
+        }
+        Log.i("Registro: ", "O curso não foi registrado.");
+        return false;
     }
 
     @Override
-    public void InscreverAluno(String aluno, String curso) throws LimiteMaximoInscricoesException {
-        super.InscreverAluno(aluno, curso);
+    public boolean InscreverAluno(String aluno, String curso) throws LimiteMaximoInscricoesException {
+        if (super.InscreverAluno(aluno, curso)){
+            Log.i("Registro: ", "O aluno: " + aluno + " foi inscrito no curso: " + curso + ".");
+            return false;
+        } else {
+            Log.i("Registro: ", "O aluno " + aluno + " já está inscrito.");
+            return false;
+        }
     }
 
-    @Override
-    public Curso verificarCurso(String curso) {
+    public Curso getCurso(String curso) {
         Curso cursoLocal = super.verificarCurso(curso);
 
         if (cursoLocal != null){
-            Log.i("Busca:", "Curso: " + cursoLocal + " .");
+            Log.i("Pesquisa: ", "Curso: " + cursoLocal + " .");
         } else {
-            Log.i("Busca:", "O curso não existe.");
+            Log.i("Pesquisa: ", "O curso " + curso + " não existe.");
         }
         return null;
     }
 
-    public Aluno verificarAluno(String aluno) {
+    public Aluno getAluno(String aluno) {
         Aluno alunoLocal = super.verificarAluno(aluno);
         if (alunoLocal != null){
-            Log.i("Busca: ", "Aluno: " + alunoLocal + " .");
+            Log.i("Pesquisa: ", "Aluno: " + alunoLocal + " .");
         } else {
-            Log.i("Busca: ", "O aluno não existe.");
+            Log.i("Pesquisa: ", "O aluno" + aluno + " não existe.");
         }
         return null;
     }
