@@ -14,9 +14,22 @@ public class Curso implements ICurso {
 	protected String titulo;
 	protected Date date;
 	ArrayList<Aula> aulas = new ArrayList<Aula>();
-	
+
+	@Override
+	public String toString() {
+		return "{" +
+				"titulo='" + titulo + '\'' +
+				", autor='" + autor + '\'' +
+				", valor=" + valor +
+				", limiteInscricoes=" + limiteInscricoes +
+				", numeroInscricoes=" + numeroInscricoes +
+				", date=" + date.toString() +
+				", aulas=" + aulas +
+				'}';
+	}
+
 	public Curso(int valor, int limiteInscricoes,
-			String autor, String titulo) {
+				 String autor, String titulo) {
 		super();
 		this.valor = valor;
 		this.limiteInscricoes = limiteInscricoes;

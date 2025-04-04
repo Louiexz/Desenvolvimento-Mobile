@@ -71,5 +71,11 @@ public class MainActivity extends AppCompatActivity {
                     PlataformaDigitalActivity.class);
             startActivity(intent); // Inicia a nova Activity
         });
+        Button btn_teste = findViewById(R.id.btn_teste);
+        btn_teste.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,
+                    TesteActivity.class);
+            startActivity(intent); // Inicia a nova Activity
+        });
     }
 }

@@ -1,7 +1,5 @@
 package com.example.myapplication.platafomaeducacional.classe;
 
-import android.util.Log;
-
 import com.example.myapplication.platafomaeducacional.interfaces.IPlatarforma;
 
 import java.util.ArrayList;
@@ -21,43 +19,43 @@ public abstract class PlataformaDigital implements IPlatarforma {
 	}
 	
 	@Override
-	public void NovoAluno(String nome, String senha, String email) {
-		try {
+	public boolean NovoAluno(String nome, String senha, String email) {
+		if (verificarAluno(nome) != null){
 			Aluno alunoLocal = new Aluno(nome, senha, email);
 			alunos.add(alunoLocal);
-			Log.i("Aluno: ", "O aluno foi registrado.");
-		} catch (Exception e){
-			Log.i("Aluno: ", "O aluno não foi registrado.");
+			return true;
 		}
+		return false;
 	}
 	
 	@Override
-	public void NovoCurso(int valor, int limiteInscricoes,
+	public boolean NovoCurso(int valor, int limiteInscricoes,
 						  String autor, String titulo) {
-		try {
+		if (verificarCurso(titulo) != null) {
 			Curso cursoLocal = new Curso(valor, limiteInscricoes, autor, titulo);
+
 			cursos.add(cursoLocal);
-			Log.i("Curso: ", "O curso foi registrado.");
-		} catch (Exception e){
-			Log.i("Curso: ", "O curso não foi registrado.");
+
+			return true;
 		}
+		return false;
 	}
 
 	@Override
-	public void InscreverAluno(String aluno, String curso)
+	public boolean InscreverAluno(String aluno, String curso)
 			throws LimiteMaximoInscricoesException {
-		if (getInscricao(aluno, curso)) {
-			Log.i("Inscrição: ", "O aluno já está inscrito.");
-		} else {
+		if (!getInscricao(aluno, curso)) {
 			Curso cursoLocal = verificarCurso(curso);
-			LimiteMaximoInscricoes(cursoLocal);
+
 			if (cursoLocal != null) {
+				LimiteMaximoInscricoes(cursoLocal);
 				Inscricao novaInscricao = new Inscricao(aluno, curso);
 
 				alunosInscricoes.add(novaInscricao);
-				Log.i("Inscrição: ", "O aluno foi inscrito.");
+				return true;
 			}
 		}
+		return false;
 	}
 
 	@Override
@@ -74,7 +72,6 @@ public abstract class PlataformaDigital implements IPlatarforma {
 	public Curso verificarCurso(String curso) {
 		for (Curso cursoLocal : cursos) {
 			if(cursoLocal.getTitulo() == curso) {
-
 				return cursoLocal;
 			}
 		}

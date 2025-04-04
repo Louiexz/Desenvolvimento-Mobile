@@ -14,7 +14,7 @@ public class BibliotecaDigitalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_investimentos);
+        setContentView(R.layout.activity_biblioteca_digital);
 
         Biblioteca biblio = new Biblioteca();
 
@@ -30,7 +30,7 @@ public class BibliotecaDigitalActivity extends AppCompatActivity {
         biblio.novoEmprestimo("Joao", "Harry Potter");
         biblio.devolverEmprestimo("Joao", "Harry Potter");
 
-        Button button = findViewById(R.id.btn_inv_back);
+        Button button = findViewById(R.id.btn_bbt_back);
         button.setOnClickListener(v -> {
             Intent intent = new Intent(BibliotecaDigitalActivity.this,
                     MainActivity.class);

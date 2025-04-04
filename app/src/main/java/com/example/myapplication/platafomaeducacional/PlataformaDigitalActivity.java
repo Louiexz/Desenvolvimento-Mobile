@@ -1,6 +1,5 @@
 package com.example.myapplication.platafomaeducacional;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -17,15 +16,15 @@ public class PlataformaDigitalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_investimentos);
+        setContentView(R.layout.activity_plataforma_digital);
 
         Plataforma plataforma = new Plataforma();
 
         plataforma.NovoAluno("Joao", "123!a", "example@gmail.com");
-        plataforma.verificarAluno("Joao");
+        plataforma.getAluno("Joao");
 
         plataforma.NovoCurso(1200, 100, "UNIT", "ADS");
-        plataforma.verificarCurso("ADS");
+        plataforma.getCurso("ADS");
 
         try {
             plataforma.InscreverAluno("Joao", "ADS");
@@ -33,9 +32,8 @@ public class PlataformaDigitalActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-            Button button = findViewById(R.id.btn_pfd_back);
-        button.setOnClickListener(v -> {
+        Button button_ptf = findViewById(R.id.btn_pfd_back);
+        button_ptf.setOnClickListener(v -> {
             Intent intent = new Intent(PlataformaDigitalActivity.this,
                     MainActivity.class);
             startActivity(intent); // Inicia a nova Activity
