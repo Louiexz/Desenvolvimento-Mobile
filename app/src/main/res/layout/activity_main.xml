@@ -7,42 +7,17 @@
     android:background="#eee"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Financas"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        android:text="Exercicios"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.5"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btn_atv_um"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Atividade 1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_bbt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
-        app:layout_constraintVertical_bias="0.5"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btn_bbt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Biblioteca"
-        app:layout_constraintBottom_toTopOf="@+id/btn_ptf"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_atv_um"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
         tools:ignore="MissingConstraints" />
 
@@ -60,15 +35,41 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_ptf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eletronicos"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        android:text="Plataforma"
+        app:layout_constraintBottom_toTopOf="@+id/btn_teste"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bbt"
+        app:layout_constraintVertical_bias="0.5"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_bbt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Biblioteca"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ptf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_atv_um"
+        app:layout_constraintVertical_bias="0.5"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_atv_um"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atividade 1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_bbt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button5"
         app:layout_constraintVertical_bias="0.5"
         tools:ignore="MissingConstraints" />
 
@@ -86,19 +87,6 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/btn_ptf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Plataforma"
-        app:layout_constraintBottom_toTopOf="@+id/btn_teste"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_bbt"
-        app:layout_constraintVertical_bias="0.5"
-        tools:ignore="MissingConstraints" />
-
-    <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -111,26 +99,54 @@
         app:layout_constraintVertical_bias="0.5"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exercicios"
-        android:textSize="20sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="29dp" />
+        android:text="Eletronicos"
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.5"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn_teste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Teste"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_calculadora"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_ptf"
         app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/btn_calculadora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculadora"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_teste"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Financas"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.5"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

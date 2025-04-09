@@ -7,6 +7,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.bibliotecadigital.BibliotecaDigitalActivity;
+import com.example.myapplication.calculadora.CalculadoraActivity;
 import com.example.myapplication.gerenciacontatos.ContatosActivity;
 import com.example.myapplication.gerenciaeletronicos.EletronicosActivity;
 import com.example.myapplication.gerenciafinancas.FinancaActivity;
@@ -75,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
         btn_teste.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this,
                     TesteActivity.class);
+            startActivity(intent); // Inicia a nova Activity
+        });
+        Button btn_calculadora = findViewById(R.id.btn_calculadora);
+        btn_calculadora.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,
+                    CalculadoraActivity.class);
             startActivity(intent); // Inicia a nova Activity
         });
     }
