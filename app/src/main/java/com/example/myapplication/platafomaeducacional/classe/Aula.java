@@ -2,7 +2,7 @@ package com.example.myapplication.platafomaeducacional.classe;
 
 import java.util.Date;
 
-import plataformaeducacional.interfaces.IAula;
+import com.example.myapplication.platafomaeducacional.interfaces.IAula;
 
 public class Aula implements IAula {
 	protected String titulo;

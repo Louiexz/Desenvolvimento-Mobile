@@ -10,7 +10,7 @@ import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.platafomaeducacional.interacao.Plataforma;
 
-import plataformaeducacional.excecao.LimiteMaximoInscricoesException;
+import com.example.myapplication.platafomaeducacional.excecao.LimiteMaximoInscricoesException;
 
 public class PlataformaDigitalActivity extends AppCompatActivity {
     @Override
