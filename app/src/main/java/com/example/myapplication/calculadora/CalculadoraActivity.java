@@ -1,5 +1,6 @@
 package com.example.myapplication.calculadora;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -14,11 +15,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MainActivity;
 
 public class CalculadoraActivity extends AppCompatActivity {
-
-    public double pegarResultado(String num){
+    public String textViewToString(TextView num) {
+        return num.getText().toString();
+    }
+    public String checkIsEmpty(String num) {
+        if (num.isEmpty()) {
+            throw new IllegalArgumentException("Empty value.");
+        }
+        return num;
+    }
+    public double convertDouble(String num){
         return Double.parseDouble(num);
     }
 
+    public double[] getValues(TextView numUmEditText, TextView numDoisEditText) {
+        return new double[]{
+            (convertDouble(checkIsEmpty(textViewToString(numUmEditText)))),
+            convertDouble(checkIsEmpty(textViewToString(numDoisEditText)))
+        };
+    }
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +75,8 @@ public class CalculadoraActivity extends AppCompatActivity {
         somar.setText("Somar");
 
         somar.setOnClickListener(v -> {
-            double numUm = pegarResultado(numUmEditText.getText().toString());
-            double numDois = pegarResultado(numDoisEditText.getText().toString());
-            double resultado = calc.somar(numUm, numDois);
+            double[] values = getValues(numUmEditText, numDoisEditText);
+            double resultado = calc.somar(values[0], values[1]);
             Toast.makeText(this, "Resultado da soma: " + resultado, Toast.LENGTH_SHORT).show();
         });
 
@@ -68,9 +84,8 @@ public class CalculadoraActivity extends AppCompatActivity {
         multiplicacao.setText("Multiplicar");
 
         multiplicacao.setOnClickListener(v -> {
-            double numUm = pegarResultado(numUmEditText.getText().toString());
-            double numDois = pegarResultado(numDoisEditText.getText().toString());
-            double resultado = calc.multiplicar(numUm, numDois);
+            double[] values = getValues(numUmEditText, numDoisEditText);
+            double resultado = calc.multiplicar(values[0], values[1]);
             Toast.makeText(this, "Resultado da multiplicação: " + resultado, Toast.LENGTH_SHORT).show();
         });
 
@@ -78,10 +93,9 @@ public class CalculadoraActivity extends AppCompatActivity {
         divisao.setText("Dividir");
 
         divisao.setOnClickListener(v -> {
-            double numUm = pegarResultado(numUmEditText.getText().toString());
-            double numDois = pegarResultado(numDoisEditText.getText().toString());
+            double[] values = getValues(numUmEditText, numDoisEditText);
             try {
-                double resultado = calc.dividir(numUm, numDois);
+                double resultado = calc.dividir(values[0], values[1]);
                 Toast.makeText(this, "Resultado da divisão: " + resultado, Toast.LENGTH_SHORT).show();
             } catch (Exception e){
                 Toast.makeText(this, "Erro: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -93,9 +107,8 @@ public class CalculadoraActivity extends AppCompatActivity {
         subtracao.setText("Subtrair");
 
         subtracao.setOnClickListener(v -> {
-            double numUm = pegarResultado(numUmEditText.getText().toString());
-            double numDois = pegarResultado(numDoisEditText.getText().toString());
-            double resultado = calc.subtrair(numUm, numDois);
+            double[] values = getValues(numUmEditText, numDoisEditText);
+            double resultado = calc.subtrair(values[0], values[1]);
             Toast.makeText(this, "Resultado da subtração: " + resultado, Toast.LENGTH_SHORT).show();
         });
 

@@ -1,6 +1,10 @@
 package com.example.myapplication.bibliotecadigital.classe;
 
-import bibliotecadigital.interfaces.IEmprestimo;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import com.example.myapplication.bibliotecadigital.interfaces.IEmprestimo;
 
 import java.time.LocalDateTime;
 
@@ -34,6 +38,7 @@ public class Emprestimo implements IEmprestimo {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	@RequiresApi(api = Build.VERSION_CODES.O)
 	public Emprestimo(String aluno, String livro) {
 		this.aluno = aluno;
 		this.livro = livro;

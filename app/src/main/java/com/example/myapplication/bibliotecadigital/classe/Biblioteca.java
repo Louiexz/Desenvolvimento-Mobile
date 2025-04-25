@@ -1,18 +1,20 @@
 package com.example.myapplication.bibliotecadigital.classe;
 
+import android.os.Build;
 import android.util.Log;
 
 import com.example.myapplication.bibliotecadigital.repositorio.BibliotecaDados;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Biblioteca extends BibliotecaDados {
 	public void autenticarAluno(String credencial, String senha) {
 		try {
 			for (Aluno aluno : super.alunos) {			
-				if (aluno.nome == credencial || aluno.email == credencial
-						&& aluno.senha == senha) {
+				if (Objects.equals(aluno.nome, credencial) || Objects.equals(aluno.email, credencial)
+						&& Objects.equals(aluno.senha, senha)) {
 					Log.i("Autenticação: ",
 							"Aluno " + aluno.nome.toLowerCase() + " logou no sistema.");
 					break;
@@ -21,7 +23,8 @@ public class Biblioteca extends BibliotecaDados {
 		} catch (Exception e) {
 			Log.e("Erro, autenticação falha: ", String.valueOf(e));
 		}
-	};
+	}
+
 	public void cadastrarAluno(String nome, String senha,
 			String curso, String email) {
 		try {
@@ -32,7 +35,8 @@ public class Biblioteca extends BibliotecaDados {
 		}  catch (Exception e) {
 			Log.e("Erro, cadastro falhou: ", String.valueOf(e));
 		}
-	};
+	}
+
 	public void novoLivro(String titulo, String autor,
 			String genero, int ano) {
 		try{
@@ -43,7 +47,7 @@ public class Biblioteca extends BibliotecaDados {
 		} catch (Exception e) {
 			Log.e("Erro, cadastro livro falhou: ", String.valueOf(e));
 		}		
-	};
+	}
 
 	public Aluno getAluno(String nome) {
 		Aluno alunoLocal = super.buscarAluno(nome);
@@ -74,7 +78,9 @@ public class Biblioteca extends BibliotecaDados {
 
 	public void novoEmprestimo(String nomeAluno, String livro) {
 		try {
-			super.novoEmprestimo(nomeAluno, livro);
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+				super.novoEmprestimo(nomeAluno, livro);
+			}
 		} catch (Exception e) {
 			Log.e("Erro, emprestímo falhou: ", String.valueOf(e));
 		}

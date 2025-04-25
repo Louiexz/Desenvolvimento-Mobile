@@ -3,7 +3,7 @@ package com.example.myapplication.platafomaeducacional.interfaces;
 import com.example.myapplication.platafomaeducacional.classe.Aluno;
 import com.example.myapplication.platafomaeducacional.classe.Curso;
 
-import plataformaeducacional.excecao.LimiteMaximoInscricoesException;
+import com.example.myapplication.platafomaeducacional.excecao.LimiteMaximoInscricoesException;
 
 public interface IPlatarforma {
 	boolean InscreverAluno(String aluno, String curso) throws LimiteMaximoInscricoesException;

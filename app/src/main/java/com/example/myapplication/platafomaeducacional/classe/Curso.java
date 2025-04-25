@@ -1,9 +1,11 @@
 package com.example.myapplication.platafomaeducacional.classe;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-import plataformaeducacional.interfaces.ICurso;
+import com.example.myapplication.platafomaeducacional.interfaces.ICurso;
 
 public class Curso implements ICurso {
 	protected boolean status;
@@ -13,8 +15,9 @@ public class Curso implements ICurso {
 	protected String autor;
 	protected String titulo;
 	protected Date date;
-	ArrayList<Aula> aulas = new ArrayList<Aula>();
+	ArrayList<Aula> aulas = new ArrayList<>();
 
+	@NonNull
 	@Override
 	public String toString() {
 		return "{" +

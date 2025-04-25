@@ -2,6 +2,8 @@ package com.example.myapplication.calculadora;
 
 import android.util.Log;
 
+import java.util.Objects;
+
 public class Calculadora implements ICalculadora {
     @Override
     public double dividir(double dividendo, double divisor) {
@@ -21,11 +23,11 @@ public class Calculadora implements ICalculadora {
 
         } catch (ArithmeticException e) {
             // Handle division by zero
-            Log.e("Erro de divisão", e.getMessage());
+            Log.e("Erro de divisão", Objects.requireNonNull(e.getMessage()));
             throw e;  // Rethrow the exception after logging it
         } catch (IllegalArgumentException e) {
             // Handle invalid divisor range
-            Log.e("Erro de parâmetro", e.getMessage());
+            Log.e("Erro de parâmetro", Objects.requireNonNull(e.getMessage()));
             throw e;  // Rethrow the exception after logging it
         }
     }

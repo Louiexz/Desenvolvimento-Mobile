@@ -3,15 +3,16 @@ package com.example.myapplication.gerenciacontatos;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public abstract class GerenciaContatos implements Contatos {
-	protected ArrayList<HashMap<String, String>> listaContatos = new ArrayList<>();;
-	
+	protected ArrayList<HashMap<String, String>> listaContatos = new ArrayList<>();
+
 	public void procurarContato(String contato) {
     	try {
 	    	for (HashMap<String, String> c : listaContatos) {
-	    		if (c.get("Nome").equals(contato)
-	            		|| c.get("Telefone").equals(contato)) {
+	    		if (Objects.equals(c.get("Nome"), contato)
+	            		|| Objects.equals(c.get("Telefone"), contato)) {
 	            	Log.i("Contato encontrado: ", String.valueOf(c));
 	            	break;
 	            }
@@ -26,8 +27,8 @@ public abstract class GerenciaContatos implements Contatos {
 	public void deletarContato(String contato) {
     	try{
 	    	for (HashMap<String, String> c : listaContatos) {
-	            if (c.get("Nome").equals(contato)
-	            		|| c.get("Telefone").equals(contato)) {
+	            if (Objects.equals(c.get("Nome"), contato)
+	            		|| Objects.equals(c.get("Telefone"), contato)) {
 	            	Log.i("Contato removido: ", contato);
 	            	
 	            	listaContatos.remove(c);

@@ -1,15 +1,17 @@
 package com.example.myapplication.platafomaeducacional.classe;
 
+import com.example.myapplication.platafomaeducacional.excecao.LimiteMaximoInscricoesException;
 import com.example.myapplication.platafomaeducacional.interfaces.IPlatarforma;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-import plataformaeducacional.excecao.LimiteMaximoInscricoesException;
+import  com.example.myapplication.platafomaeducacional.excecao.LimiteMaximoInscricoesException;
 
 public abstract class PlataformaDigital implements IPlatarforma {
-	ArrayList<Aluno> alunos = new ArrayList<Aluno>();
-	ArrayList<Curso> cursos = new ArrayList<Curso>();
-	ArrayList<Inscricao> alunosInscricoes = new ArrayList<Inscricao>();
+	ArrayList<Aluno> alunos = new ArrayList<>();
+	ArrayList<Curso> cursos = new ArrayList<>();
+	ArrayList<Inscricao> alunosInscricoes = new ArrayList<>();
 	
 	protected void LimiteMaximoInscricoes(Curso curso) throws LimiteMaximoInscricoesException {
 		if (curso.getNumeroInscricoes() >= curso.getLimiteInscricoes()) {					
@@ -43,7 +45,7 @@ public abstract class PlataformaDigital implements IPlatarforma {
 
 	@Override
 	public boolean InscreverAluno(String aluno, String curso)
-			throws LimiteMaximoInscricoesException {
+			throws LimiteMaximoInscricoesException, LimiteMaximoInscricoesException {
 		if (!getInscricao(aluno, curso)) {
 			Curso cursoLocal = verificarCurso(curso);
 
@@ -61,7 +63,7 @@ public abstract class PlataformaDigital implements IPlatarforma {
 	@Override
 	public Aluno verificarAluno(String aluno) {
 		for (Aluno alunoLocal : alunos) {
-			if(alunoLocal.getNome() == aluno) {
+			if(Objects.equals(alunoLocal.getNome(), aluno)) {
 				return alunoLocal;
 			}
 		}
@@ -71,7 +73,7 @@ public abstract class PlataformaDigital implements IPlatarforma {
 	@Override
 	public Curso verificarCurso(String curso) {
 		for (Curso cursoLocal : cursos) {
-			if(cursoLocal.getTitulo() == curso) {
+			if(Objects.equals(cursoLocal.getTitulo(), curso)) {
 				return cursoLocal;
 			}
 		}
@@ -80,8 +82,8 @@ public abstract class PlataformaDigital implements IPlatarforma {
 
 	private boolean getInscricao(String aluno, String curso) {
 		for (Inscricao inscricaoLocal : alunosInscricoes) {
-			if(inscricaoLocal.getAluno() == aluno
-					&& inscricaoLocal.getCurso() == curso) {
+			if(Objects.equals(inscricaoLocal.getAluno(), aluno)
+					&& Objects.equals(inscricaoLocal.getCurso(), curso)) {
 				return true;
 			}
 		}

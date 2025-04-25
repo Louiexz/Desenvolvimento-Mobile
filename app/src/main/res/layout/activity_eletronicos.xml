@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
         android:layout_marginTop="616dp"
-        android:text="Back"
+        android:text="@string/Back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,9 +23,11 @@
         android:layout_marginTop="372dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Marca"
+        android:text="@string/Marca"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints=""
+        tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/eletronico_modelo"
@@ -35,9 +37,11 @@
         android:layout_marginTop="196dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Modelo"
+        android:text="@string/Modelo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints=""
+        tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/eletronico_ano"
@@ -48,7 +52,9 @@
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints=""
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/textView4"
@@ -56,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="152dp"
         android:layout_marginTop="112dp"
-        android:text="Eletronicos"
+        android:text="@string/eletronicos"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -67,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="260dp"
-        android:text="Ano"
+        android:text="@string/ano"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -78,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="124dp"
         android:layout_marginTop="463dp"
-        android:text="Novo computador"
+        android:text="@string/novo_computador"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="141dp"
         android:layout_marginTop="539dp"
-        android:text="Novo celular"
+        android:text="@string/novo_celular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

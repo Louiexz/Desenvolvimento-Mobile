@@ -15,14 +15,10 @@ public class TesteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_linear);
 
         Button btn_toast_um = findViewById(R.id.btn_toast_um);
-        btn_toast_um.setOnClickListener(v -> {
-            Toast.makeText(TesteActivity.this, "Toast um clicado!", Toast.LENGTH_SHORT).show();
-        });
+        btn_toast_um.setOnClickListener(v -> Toast.makeText(TesteActivity.this, "Toast um clicado!", Toast.LENGTH_SHORT).show());
 
         Button btn_toast_dois = findViewById(R.id.btn_toast_dois);
-        btn_toast_dois.setOnClickListener(v -> {
-            Toast.makeText(TesteActivity.this, "Toast dois clicado!", Toast.LENGTH_SHORT).show();
-        });
+        btn_toast_dois.setOnClickListener(v -> Toast.makeText(TesteActivity.this, "Toast dois clicado!", Toast.LENGTH_SHORT).show());
 
         Button btn_back = findViewById(R.id.btn_teste_back);
         btn_back.setOnClickListener(v -> {

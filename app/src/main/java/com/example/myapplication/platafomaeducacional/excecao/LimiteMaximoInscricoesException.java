@@ -1,4 +1,4 @@
-package plataformaeducacional.excecao;
+package com.example.myapplication.platafomaeducacional.excecao;
 
 public class LimiteMaximoInscricoesException extends Exception {
 	private static final long serialVersionUID = 845188670231467333L;

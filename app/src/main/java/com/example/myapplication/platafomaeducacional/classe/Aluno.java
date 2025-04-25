@@ -1,6 +1,8 @@
 package com.example.myapplication.platafomaeducacional.classe;
 
-import plataformaeducacional.interfaces.IAluno;
+import androidx.annotation.NonNull;
+
+import com.example.myapplication.platafomaeducacional.interfaces.IAluno;
 
 public class Aluno implements IAluno {
 	protected String nome;
@@ -8,6 +10,7 @@ public class Aluno implements IAluno {
 	protected String email;
 	protected boolean status;
 
+	@NonNull
 	@Override
 	public String toString() {
 		return "{" +

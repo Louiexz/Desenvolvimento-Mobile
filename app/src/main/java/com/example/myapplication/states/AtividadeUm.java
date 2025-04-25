@@ -1,5 +1,6 @@
 package com.example.myapplication.states;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import com.example.myapplication.R;
 
 public class AtividadeUm extends AppCompatActivity {
     
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,7 @@ public class AtividadeUm extends AppCompatActivity {
             startActivity(intent); // Inicia a nova Activity
         });
     }
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onStart(){
         super.onStart();

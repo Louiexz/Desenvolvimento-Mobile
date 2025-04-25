@@ -1,4 +1,4 @@
-package plataformaeducacional.interfaces;
+package com.example.myapplication.platafomaeducacional.interfaces;
 
 public interface IAluno {
 	void deletarAluno();

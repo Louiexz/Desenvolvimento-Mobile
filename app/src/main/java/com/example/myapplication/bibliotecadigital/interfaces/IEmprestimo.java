@@ -1,4 +1,4 @@
-package bibliotecadigital.interfaces;
+package com.example.myapplication.bibliotecadigital.interfaces;
 
 public interface IEmprestimo {
 	public String getStatus();

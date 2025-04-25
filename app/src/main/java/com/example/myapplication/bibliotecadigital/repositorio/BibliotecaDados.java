@@ -1,5 +1,9 @@
 package com.example.myapplication.bibliotecadigital.repositorio;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.example.myapplication.bibliotecadigital.classe.Aluno;
 import com.example.myapplication.bibliotecadigital.classe.Emprestimo;
 import com.example.myapplication.bibliotecadigital.classe.Livro;
@@ -7,6 +11,7 @@ import com.example.myapplication.bibliotecadigital.excecao.ObjetoNaoEncontradoEx
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class BibliotecaDados {
 	protected int LIMITE_EMPRESTIMO_DIAS = 0;
@@ -28,7 +33,7 @@ public abstract class BibliotecaDados {
 
 	protected Aluno buscarAluno(String nome) {
 		for (Aluno aluno : alunos) {
-			if (aluno.getNome() == nome) {
+			if (Objects.equals(aluno.getNome(), nome)) {
 				return aluno;
 			}
 		}
@@ -92,7 +97,7 @@ public abstract class BibliotecaDados {
 
 	protected Livro buscarLivro(String livro) {
 		for (Livro livroLocal : livros){
-			if (livroLocal.getTitulo() == livro){
+			if (Objects.equals(livroLocal.getTitulo(), livro)){
 				return livroLocal;
 			}
 		}
@@ -102,7 +107,7 @@ public abstract class BibliotecaDados {
 
 	protected Emprestimo buscarEmprestimo(String nomeAluno, String livro) {
 		for (Emprestimo emprestimo : emprestimos){
-			if (emprestimo.getLivro() == livro && emprestimo.getAluno() == nomeAluno){
+			if (Objects.equals(emprestimo.getLivro(), livro) && Objects.equals(emprestimo.getAluno(), nomeAluno)){
 				return emprestimo;
 			}
 		}
@@ -111,7 +116,8 @@ public abstract class BibliotecaDados {
 	}
 
 
-	protected void novoEmprestimo(String nomeAluno, String livro) throws ObjetoNaoEncontradoException {	
+	@RequiresApi(api = Build.VERSION_CODES.O)
+	protected void novoEmprestimo(String nomeAluno, String livro) throws ObjetoNaoEncontradoException {
 		Aluno aluno = buscarAluno(nomeAluno);
 		Livro livroLocal = buscarLivro(livro);
 

@@ -6,7 +6,7 @@ import com.example.myapplication.platafomaeducacional.classe.Aluno;
 import com.example.myapplication.platafomaeducacional.classe.Curso;
 import com.example.myapplication.platafomaeducacional.classe.PlataformaDigital;
 
-import plataformaeducacional.excecao.LimiteMaximoInscricoesException;
+import com.example.myapplication.platafomaeducacional.excecao.LimiteMaximoInscricoesException;
 
 public class Plataforma extends PlataformaDigital {
     @Override

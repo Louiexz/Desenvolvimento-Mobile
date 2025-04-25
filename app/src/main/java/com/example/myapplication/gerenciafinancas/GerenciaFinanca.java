@@ -4,9 +4,10 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class GerenciaFinanca implements IGerenciaFinanca {
-	protected ArrayList<HashMap<String, String>> transacoes = new ArrayList<>();;
+	protected ArrayList<HashMap<String, String>> transacoes = new ArrayList<>();
 
 	@Override
 	public void CalcularSaldo() {
@@ -14,9 +15,9 @@ public class GerenciaFinanca implements IGerenciaFinanca {
 			double saldo = 0;
 			for (HashMap<String, String> c : this.transacoes) {
 				if (c.get("Despesa") != null) {
-					saldo -= Double.parseDouble(c.get("Despesa"));
+					saldo -= Double.parseDouble(Objects.requireNonNull(c.get("Despesa")));
 				} else if(c.get("Receita") != null) {
-					saldo += Double.parseDouble(c.get("Receita"));
+					saldo += Double.parseDouble(Objects.requireNonNull(c.get("Receita")));
 				}
 			}
 			Log.i("Saldo: ", String.valueOf(saldo));

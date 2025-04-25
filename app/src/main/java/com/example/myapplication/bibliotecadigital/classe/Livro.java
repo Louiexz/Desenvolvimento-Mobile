@@ -1,13 +1,15 @@
 package com.example.myapplication.bibliotecadigital.classe;
 
-import bibliotecadigital.interfaces.ILivro;
+import androidx.annotation.NonNull;
+
+import com.example.myapplication.bibliotecadigital.interfaces.ILivro;
 
 public class Livro implements ILivro {
-	protected int ano = 0;
+	protected int ano;
 	protected boolean status = true;
-	protected String titulo = "";
-	protected String autor = "";
-	protected String genero = "";
+	protected String titulo;
+	protected String autor;
+	protected String genero;
 	
 	public int getAno() {
 		return ano;
@@ -76,6 +78,7 @@ public class Livro implements ILivro {
 		this.status = !status;
 	}
 
+	@NonNull
 	@Override
 	public String toString() {
 		return "{" +

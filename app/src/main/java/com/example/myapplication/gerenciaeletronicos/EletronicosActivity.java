@@ -1,5 +1,6 @@
 package com.example.myapplication.gerenciaeletronicos;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -18,7 +19,7 @@ public class EletronicosActivity extends AppCompatActivity {
 
         Button btn_new_computer = findViewById(R.id.btn_new_computer);
         btn_new_computer.setOnClickListener(v -> {
-            Computador pc = new Computador(
+            @SuppressLint("CutPasteId") Computador pc = new Computador(
                     Integer.parseInt(String.valueOf(findViewById(R.id.eletronico_ano))),
                     String.valueOf(findViewById(R.id.eletronico_marca)),
                     String.valueOf(findViewById(R.id.eletronico_modelo)));
@@ -29,7 +30,7 @@ public class EletronicosActivity extends AppCompatActivity {
 
         Button btn_new_cell = findViewById(R.id.btn_new_cell);
         btn_new_cell.setOnClickListener(v -> {
-            Smartphone cell = new Smartphone(
+            @SuppressLint("CutPasteId") Smartphone cell = new Smartphone(
                     Integer.parseInt(String.valueOf(findViewById(R.id.eletronico_ano))),
                     String.valueOf(findViewById(R.id.eletronico_marca)),
                     String.valueOf(findViewById(R.id.eletronico_modelo)));

@@ -4,9 +4,10 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public abstract class GerenciaInvestimento implements IGerenciaInvestimento {
-	protected ArrayList<HashMap<String, String>> investimentos = new ArrayList<>();;
+	protected ArrayList<HashMap<String, String>> investimentos = new ArrayList<>();
 
 	@Override
 	public void totalRetorno() {
@@ -14,7 +15,7 @@ public abstract class GerenciaInvestimento implements IGerenciaInvestimento {
 			double valor = 0;
 			for (HashMap<String, String> c : investimentos) {
 				if (c.get("Valor") != null) {
-					valor -= Double.parseDouble(c.get("Valor"));
+					valor -= Double.parseDouble(Objects.requireNonNull(c.get("Valor")));
 				}
 			}
 			Log.i("Valor de retorno: ", String.valueOf(valor));

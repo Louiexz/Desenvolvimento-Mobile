@@ -1,13 +1,15 @@
 package com.example.myapplication.bibliotecadigital.classe;
 
-import bibliotecadigital.interfaces.IAluno;
+import androidx.annotation.NonNull;
+
+import com.example.myapplication.bibliotecadigital.interfaces.IAluno;
 
 public class Aluno implements IAluno {
     protected boolean status = true;
-    protected String nome = "";
-    protected String senha = "";
-    protected String curso = "";
-    protected String email = "";
+    protected String nome;
+    protected String senha;
+    protected String curso;
+    protected String email;
 
 	public boolean isStatus() {
 		return status;
@@ -75,6 +77,7 @@ public class Aluno implements IAluno {
 		this.status = !this.status;
 	}
 
+	@NonNull
 	@Override
 	public String toString() {
 		return "{" +
